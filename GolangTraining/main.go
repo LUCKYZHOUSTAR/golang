@@ -340,23 +340,7 @@ func swap3(x *int, y *int) {
 	*x = *y
 	*y = temp
 }
-func main() {
-	fmt.Println("hello world!");
-	var b int = 100
-	var a int = 50
 
-	fmt.Printf("交换前，a 的值 : %d\n", a)
-	fmt.Printf("交换前，b 的值 : %d\n", b)
-
-	/* 调用 swap() 函数
-	* &a 指向 a 指针，a 变量的地址
-	* &b 指向 b 指针，b 变量的地址
-	*/
-	swap3(&a, &b)
-
-	fmt.Printf("交换后，a 的值 : %d\n", a)
-	fmt.Printf("交换后，b 的值 : %d\n", b)
-}
 
 //变量作用域范围信息
 func varableBoundary() {
@@ -367,35 +351,33 @@ func varableBoundary() {
 	 */
 }
 
-
-func array(){
+func array() {
 	var arr [12] int
-	var balance=[12]int{1,2,3,4}
-	balance[4]=0
+	var balance = [12]int{1, 2, 3, 4}
+	balance[4] = 0
 	fmt.Println(arr)
 }
 
-
-func point(){
-	var a int=10
-	fmt.Printf("变量的地址: %x\n", &a  )
+func point() {
+	var a int = 10
+	fmt.Printf("变量的地址: %x\n", &a)
 	/**一个指针变量可以指向任何一个值的内存地址它指向那个值的内存地址。*/
 	var ip *int        /* 声明指针变量 */
 
 	ip = &a  /* 指针变量的存储地址 */
 
-	fmt.Printf("a 变量的地址是: %x\n", &a  )
+	fmt.Printf("a 变量的地址是: %x\n", &a)
 
 	/* 指针变量的存储地址 */
-	fmt.Printf("ip 变量储存的指针地址: %x\n", ip )
+	fmt.Printf("ip 变量储存的指针地址: %x\n", ip)
 
 	/* 使用指针访问值 */
-	fmt.Printf("*ip 变量的值: %d\n", *ip )
+	fmt.Printf("*ip 变量的值: %d\n", *ip)
 
 	//空指针信息
 	var ptr *int
-	fmt.Println("空指针信息为",ptr)
-	if(ptr != nil) {
+	fmt.Println("空指针信息为", ptr)
+	if (ptr != nil) {
 
 	}    /* ptr 不是空指针 */
 }
@@ -404,21 +386,137 @@ func point(){
 
 //定义结构体信息
 type Book struct {
-	title string
-	author string
+	title   string
+	author  string
 	subject string
-	bookId int
+	bookId  int
 }
 
-func calcuteBook(){
+func calcuteBook() {
 	var book1 Book
-	book1.author="张是哪"
+	book1.author = "张是哪"
 	fmt.Println(book1.author)
 }
 
 /**
 相当于动态的数组
  */
-func slice(){
+func slice() {
+	s := []int{1, 2, 3}
+	var numbers = make([]int, 3, 5)
+	fmt.Println(s)
+	printSlice(numbers)
+}
+
+func printSlice(x []int) {
+	fmt.Printf("len=%d cap=%d slice=%v\n", len(x), cap(x), x)
+}
+
+
+//map集合信息
+/**
+Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值。
+Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，我们无法决定它的返回顺序，这是因为 Map 是使用 hash 表来实现的。*/
+func mapTest() {
+	//var map_variable map[key_data_type]value_data_type
+	var countryCaptialMap map[string]string
+	countryCaptialMap = make(map[string]string)//创建集合
+	countryCaptialMap["france"] = "Paris"
+	for country := range countryCaptialMap {
+		fmt.Println(country)
+	}
+
+	//查看元素在集合中是否存在
+	captial, ok := countryCaptialMap["france"]
+	/* 如果 ok 是 true, 则存在，否则不存在 */
+	if (ok) {
+		fmt.Println("Capital of United States is", captial)
+	} else {
+		fmt.Println("Capital of United States is not present")
+	}
 
 }
+
+func mapTest2() {
+	/* 创建 map */
+	countryCapitalMap := map[string]string{"France":"Paris", "Italy":"Rome", "Japan":"Tokyo", "India":"New Delhi"}
+
+	fmt.Println("原始 map")
+
+	/* 打印 map */
+	for country := range countryCapitalMap {
+		fmt.Println("Capital of", country, "is", countryCapitalMap[country])
+	}
+
+	/* 删除元素 */
+	delete(countryCapitalMap, "France");
+	fmt.Println("Entry for France is deleted")
+
+	fmt.Println("删除元素后 map")
+
+	/* 打印 map */
+	for country := range countryCapitalMap {
+		fmt.Println("Capital of", country, "is", countryCapitalMap[country])
+	}
+}
+
+
+//语言类型转换
+func type_name(){
+	var sum int = 17
+	var count int = 5
+	var mean float32
+
+	mean = float32(sum)/float32(count)
+	fmt.Printf("mean 的值为: %f\n",mean)
+}
+
+//接口定义信息
+type Phone interface {
+	call()
+}
+type NokiaPhone struct {
+
+}
+type IPhone struct {
+}
+
+func (iPhone IPhone) call() {
+	fmt.Println("I am iPhone, I can call you!")
+}
+
+
+//实现接口的方法信息
+func(nokia NokiaPhone)call(){
+	fmt.Println("I am Nokia, I can call you!")
+}
+
+func main(){
+	var phone Phone
+	phone = new(NokiaPhone)
+	phone.call()
+
+	phone = new(IPhone)
+	phone.call()
+}
+
+
+
+//func main() {
+//	fmt.Println("hello world!");
+//	var b int = 100
+//	var a int = 50
+//
+//	fmt.Printf("交换前，a 的值 : %d\n", a)
+//	fmt.Printf("交换前，b 的值 : %d\n", b)
+//
+//	/* 调用 swap() 函数
+//	* &a 指向 a 指针，a 变量的地址
+//	* &b 指向 b 指针，b 变量的地址
+//	*/
+//	swap3(&a, &b)
+//
+//	fmt.Printf("交换后，a 的值 : %d\n", a)
+//	fmt.Printf("交换后，b 的值 : %d\n", b)
+//	mapTest()
+//}
