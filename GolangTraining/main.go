@@ -409,7 +409,7 @@ func slice() {
 }
 
 func printSlice(x []int) {
-	fmt.Printf("len=%d cap=%d slice=%v\n", len(x), cap(x), x)
+	fmt.Printf("len=%d cap=%d slice.md=%v\n", len(x), cap(x), x)
 }
 
 
