@@ -1,4 +1,4 @@
-#slice是可变长的
+####slice是可变长的
 定义完一个slice变量之后，不需要为它的容量而担心，你随时可以往slice里面加数据
 
 比如：
@@ -14,7 +14,7 @@ v:=[2]string{"str1", "str2"} //这个是array
 m:=[]string{"str1","str2"} //这个是slice
 
 写法上默念：array有长度slice没长度，array有长度slice没长度…
-#slice是一个指针而不是值。
+#### slice是一个指针而不是值。
 指针比值可就小多了，因此，我们将slice作为函数参数传递比将array作为函数参数传递会更有性能。
 
 slice是一个指针，它指向的是一个array机构，它有两个基本函数len和cap。
