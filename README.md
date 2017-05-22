@@ -11,3 +11,5 @@ a lot of example to practise golang
 * [Go 语言指针](http://blog.csdn.net/u011225629/article/details/50097385)
 * [go语言指针符号的*和&](https://my.oschina.net/u/943306/blog/131269)
 * [GO语言并发编程之互斥锁、读写锁详解](http://www.jb51.net/article/57335.htm)
+* [Go by Example](https://gobyexample.com/)
+
